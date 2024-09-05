@@ -9,12 +9,8 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public String handleError() {
+        System.out.println("Vem para o error");
         // Retorna uma página HTML personalizada ou uma mensagem
         return "error";
-    }
-
-    @Override
-    public String getErrorPath() {
-        return "/error";
     }
 }
