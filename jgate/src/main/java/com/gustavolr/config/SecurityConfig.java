@@ -33,7 +33,7 @@ public class SecurityConfig {
         return http
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authz -> {
-            authz.requestMatchers("/index", "/register/**, \"/v3/**\", \"/swagger-ui/**\"").permitAll();  // Allow access to public and login endpoints
+            authz.requestMatchers("/index", "/auth", "/register").permitAll();  // Allow access to public and login endpoints
             authz.requestMatchers("/admin/**").hasRole(RoleName.ADMIN.toString());  // Allow access to public and login endpoints
             authz.requestMatchers("/user/**").hasRole(RoleName.USER.toString());  // Allow access to public and login endpoints
             authz.anyRequest().authenticated();

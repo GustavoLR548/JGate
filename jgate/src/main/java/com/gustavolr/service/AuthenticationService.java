@@ -45,7 +45,7 @@ public class AuthenticationService implements UserDetailsService {
                 .roles(getRoles(userObj))
                 .build();
         } else {
-            throw new UsernameNotFoundException("no user");
+            throw new UsernameNotFoundException("no user found, or credentials are incorrect");
         }
         
     }
@@ -56,5 +56,18 @@ public class AuthenticationService implements UserDetailsService {
         }
 
         return user.getRole().split(",");
+    }
+
+
+    public boolean authenticateUser(String username, String rawPassword) {
+        Optional<User> userOptional = userRepository.findByUsername(username);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            return passwordEncoder.matches(rawPassword, user.getPassword());
+        }
+
+        return false; 
     }
 }
