@@ -1,5 +1,6 @@
 package com.gustavolr.security;
 
+import java.time.Instant;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
@@ -15,10 +16,12 @@ public class JwtProvider {
     private int jwtExpirationMs = 86400000;  // 24 horas
 
     public String generateJwtToken(String username) {
+        Instant now = Instant.now();
+        Instant expirationTime = now.plusMillis(jwtExpirationMs);   
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
+                .setExpiration(Date.from(expirationTime))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
