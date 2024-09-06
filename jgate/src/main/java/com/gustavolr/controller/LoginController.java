@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
+
+    public final static String PAGE_PATH = "/login";
+
     @GetMapping("/login")
     public String getLogin() {
         return "login";

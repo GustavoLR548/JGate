@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CustomErrorController implements ErrorController {
 
-    @RequestMapping("/error")
+    public final static String PAGE_PATH = "/error";
+
+    @RequestMapping(PAGE_PATH)
     public String handleError() {
-        System.out.println("Vem para o error");
-        // Retorna uma página HTML personalizada ou uma mensagem
         return "error";
     }
 }
