@@ -31,7 +31,7 @@ public class JwtProvider {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            // Token inválido
+            System.err.println("Invalid JWT signature! " + e.getMessage());
         }
         return false;
     }
