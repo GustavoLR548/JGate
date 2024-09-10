@@ -11,6 +11,7 @@ Este é um projeto de API REST com Spring Boot para autenticação de usuários 
 - **Verificação de Token**: Verifica se um token JWT é válido.
 - **Controle de Acesso por Papéis**: Atribuição de papéis aos usuários durante o registro (ex.: ADMIN, USER) para controlar o acesso a determinadas funcionalidades.
 - **Persistência no Banco de Dados MySQL**: Os dados dos usuários são armazenados em um banco de dados MySQL.
+- **Teste de API via interface gráfica**: Você pode testar a API usando uma interface gráfica Swagger.
 
 ## Endpoints
 
@@ -158,6 +159,11 @@ curl -X POST http://localhost:8080/auth/verifyToken \
   -H "Content-Type: application/json" \
   -d '{"token": "seu_token_jwt"}'
 ```
+
+## Testar usando Swagger
+
+Este projeto foi configurado com Swagger, logo permitindo testes da API usando a página ```swagger-ui.html```
+
 # Dependências
 - Spring Boot Starter Web: Para construir serviços RESTful.
 - Spring Boot Starter Security: Para autenticação e criptografia de senhas.
